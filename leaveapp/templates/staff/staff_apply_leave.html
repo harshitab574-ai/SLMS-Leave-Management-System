@@ -1,0 +1,60 @@
+{% extends 'staff/staff_base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h4>Apply Leave</h4>
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label">Staff</label>
+                    {{ form.staff }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Leave Type</label>
+                    {{ form.leave_type }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Reason</label>
+                    {{ form.reason }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">From Date</label>
+                    {{ form.from_date }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">To Date</label>
+                    {{ form.to_date }}
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    Apply Leave
+                </button>
+
+                <a href="{% url 'staff_dashboard' %}" class="btn btn-secondary">
+                    Back
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

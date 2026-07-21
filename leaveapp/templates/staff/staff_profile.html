@@ -1,0 +1,39 @@
+{% extends "staff/staff_base.html" %}
+
+{% block content %}
+
+<h2>My Profile</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <td>{{ staff.name }}</td>
+    </tr>
+
+    <tr>
+        <th>Email</th>
+        <td>{{ staff.email }}</td>
+    </tr>
+
+    <tr>
+        <th>Phone</th>
+        <td>{{ staff.phone }}</td>
+    </tr>
+
+    <tr>
+        <th>Department</th>
+        <td>{{ staff.department }}</td>
+    </tr>
+
+    <tr>
+        <th>Designation</th>
+        <td>{{ staff.designation }}</td>
+    </tr>
+
+    <tr>
+        <th>Joining Date</th>
+        <td>{{ staff.joining_date }}</td>
+    </tr>
+</table>
+
+{% endblock %}

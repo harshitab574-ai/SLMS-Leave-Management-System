@@ -1,0 +1,85 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h3>Staff Profile</h3>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-4 text-center">
+
+                    {% if staff.image %}
+                        <img src="{{ staff.image.url }}"
+                             class="img-thumbnail"
+                             width="200"
+                             height="200">
+                    {% else %}
+                        <img src="https://via.placeholder.com/200"
+                             class="img-thumbnail">
+                    {% endif %}
+
+                </div>
+
+                <div class="col-md-8">
+
+                    <table class="table table-bordered">
+
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ staff.name }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ staff.email }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Phone</th>
+                            <td>{{ staff.phone }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Department</th>
+                            <td>{{ staff.department }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Designation</th>
+                            <td>{{ staff.designation }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Address</th>
+                            <td>{{ staff.address }}</td>
+                        </tr>
+
+                    </table>
+
+                    <a href="{% url 'view_staff' %}" class="btn btn-secondary">
+                        Back
+                    </a>
+
+                    <a href="{% url 'edit_staff' staff.id %}" class="btn btn-warning">
+                        Edit
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

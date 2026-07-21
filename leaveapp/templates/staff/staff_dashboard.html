@@ -1,0 +1,58 @@
+{% extends 'staff/staff_base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">Staff Dashboard</h2>
+
+<div class="row">
+
+    <div class="col-md-3 mb-4">
+        <div class="card text-white bg-primary shadow">
+            <div class="card-body">
+                <h5>Total Leaves</h5>
+                <h2>{{ total_leave }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card text-white bg-success shadow">
+            <div class="card-body">
+                <h5>Approved</h5>
+                <h2>{{ approved }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card text-white bg-warning shadow">
+            <div class="card-body">
+                <h5>Pending</h5>
+                <h2>{{ pending }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card text-white bg-danger shadow">
+            <div class="card-body">
+                <h5>Rejected</h5>
+                <h2>{{ rejected }}</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="card shadow mt-4">
+    <div class="card-body">
+        <h4>Welcome Staff</h4>
+        <p class="mb-0">
+            Welcome to the Staff Leave Management System.
+            From here you can apply for leave, check your leave history,
+            and view your profile.
+        </p>
+    </div>
+</div>
+
+{% endblock %}
