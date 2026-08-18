@@ -41,25 +41,37 @@
                     <td>{{ leave.to_date }}</td>
 
                     <td>
+<td>{{ leave.staff.name }}</td>
 
-                        {% if leave.status == "Pending" %}
-                            <span class="badge bg-warning text-dark">
-                                Pending
-                            </span>
+<td>{{ leave.leave_type }}</td>
 
-                        {% elif leave.status == "Approved" %}
-                            <span class="badge bg-success">
-                                Approved
-                            </span>
+<td>{{ leave.from_date }}</td>
 
-                        {% else %}
-                            <span class="badge bg-danger">
-                                Rejected
-                            </span>
+<td>{{ leave.to_date }}</td>
 
-                        {% endif %}
+<td>{{ leave.leave_days }}</td>
 
-                    </td>
+<td>{{ leave.status }}</td>
+
+<td>
+
+     {% if leave.status == "Pending" %}
+
+        <a href="{% url 'approve_leave' leave.id %}">
+            Approve
+        </a>
+
+        <a href="{% url 'reject_leave' leave.id %}">
+            Reject
+        </a>
+
+    {% else %}
+
+        {{ leave.status }}
+
+    {% endif %}
+
+</td>
 
                     <td>
 

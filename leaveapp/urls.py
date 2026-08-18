@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
 
@@ -13,8 +15,7 @@ urlpatterns = [
     # ==========================
     path("admin-login/", views.admin_login, name="admin_login"),
     path("logout/", views.user_logout, name="logout"),
-    path("admin-login/", views.admin_login, name="admin_login"),
-
+   
     # ==========================
     # Admin Dashboard
     # ==========================
@@ -32,7 +33,7 @@ urlpatterns = [
     # ==========================
     # Leave Management (Admin)
     # ==========================
-    path("apply-leave/", views.apply_leave, name="apply_leave"),
+
     path("leave-request/", views.leave_request, name="leave_request"),
     path("approve-leave/<int:id>/", views.approve_leave, name="approve_leave"),
     path("reject-leave/<int:id>/", views.reject_leave, name="reject_leave"),
@@ -53,3 +54,4 @@ urlpatterns = [
 ),
 
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

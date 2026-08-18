@@ -26,17 +26,33 @@
 
     <h2 class="text-center mb-4">Staff Login</h2>
 
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <form method="POST">
         {% csrf_token %}
 
         <div class="mb-3">
-            <label>Name</label>
-            <input type="text" name="username" class="form-control" placeholder="Enter Name" required>
+            <label>Email</label>
+            <input type="email"
+                   name="username"
+                   class="form-control"
+                   placeholder="Enter Email"
+                   required>
         </div>
 
         <div class="mb-3">
             <label>Password</label>
-            <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+            <input type="password"
+                   name="password"
+                   class="form-control"
+                   placeholder="Enter Password"
+                   required>
         </div>
 
         <button type="submit" class="btn btn-success w-100">

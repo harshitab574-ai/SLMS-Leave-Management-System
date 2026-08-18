@@ -7,8 +7,9 @@
 <table border="1">
     <tr>
         <th>Leave Type</th>
-        <th>From</th>
-        <th>To</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Total Days</th>
         <th>Status</th>
     </tr>
 
@@ -17,6 +18,7 @@
         <td>{{ leave.leave_type }}</td>
         <td>{{ leave.from_date }}</td>
         <td>{{ leave.to_date }}</td>
+        <td>{{ leave.leave_days }}</td>
         <td>{{ leave.status }}</td>
     </tr>
     {% empty %}

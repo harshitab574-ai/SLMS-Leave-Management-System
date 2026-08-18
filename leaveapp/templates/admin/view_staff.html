@@ -1,6 +1,11 @@
+
 {% extends 'admin/base.html' %}
 
 {% block content %}
+
+<h1>TEST VIEW STAFF PAGE</h1>
+
+<p>Total Staff: {{ staff|length }}</p>
 
 <div class="container mt-4">
 
@@ -54,7 +59,7 @@
                     No Image
                 {% endif %}
             </td>
-
+            
             <td>{{ s.name }}</td>
             <td>{{ s.email }}</td>
             <td>{{ s.department }}</td>
