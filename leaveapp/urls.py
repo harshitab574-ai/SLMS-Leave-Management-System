@@ -36,7 +36,7 @@ urlpatterns = [
 
     path("leave-request/", views.leave_request, name="leave_request"),
     path("approve-leave/<int:id>/", views.approve_leave, name="approve_leave"),
-    path("reject-leave/<int:id>/", views.reject_leave, name="reject_leave"),
+    path("reject-leave/<int:id>/",views.reject_leave,name="reject_leave"),
 
     # ==========================
     # Staff Module

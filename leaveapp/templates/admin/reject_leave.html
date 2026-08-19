@@ -1,0 +1,106 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-danger text-white">
+
+            <h3>Reject Leave</h3>
+
+        </div>
+
+
+        <div class="card-body">
+
+            <p>
+                <strong>Staff:</strong>
+                {{ leave.staff.name }}
+            </p>
+
+
+            <p>
+                <strong>Leave Type:</strong>
+                {{ leave.leave_type }}
+            </p>
+
+
+            <p>
+                <strong>From Date:</strong>
+                {{ leave.from_date }}
+            </p>
+
+
+            <p>
+                <strong>To Date:</strong>
+                {{ leave.to_date }}
+            </p>
+
+
+            <p>
+                <strong>Total Days:</strong>
+                {{ leave.leave_days }}
+            </p>
+
+
+            <p>
+                <strong>Staff Reason:</strong>
+                {{ leave.reason }}
+            </p>
+
+
+            <hr>
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Reason for Rejection
+
+                    </label>
+
+
+                    <textarea
+                        name="rejection_reason"
+                        class="form-control"
+                        rows="4"
+                        placeholder="Enter reason for rejection..."
+                        required></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-danger">
+
+                    Reject Leave
+
+                </button>
+
+
+                <a
+                    href="{% url 'leave_request' %}"
+                    class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

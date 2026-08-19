@@ -9,6 +9,156 @@
         <div class="card-header bg-primary text-white">
             <h3>Leave Requests</h3>
         </div>
+        <div class="mb-4">
+
+    <form method="GET">
+
+        <div class="row g-3">
+
+            <!-- Search Staff -->
+            <div class="col-md-3">
+
+                <label class="form-label">
+                    Staff Name
+                </label>
+
+                <input
+                    type="text"
+                    name="search"
+                    class="form-control"
+                    placeholder="Search staff..."
+                    value="{{ search }}"
+                >
+
+            </div>
+
+
+            <!-- Leave Type -->
+            <div class="col-md-2">
+
+                <label class="form-label">
+                    Leave Type
+                </label>
+
+                <select name="leave_type" class="form-select">
+
+                    <option value="">
+                        All
+                    </option>
+
+                    <option value="Casual"
+                        {% if leave_type == "Casual" %}selected{% endif %}>
+                        Casual
+                    </option>
+
+                    <option value="Sick"
+                        {% if leave_type == "Sick" %}selected{% endif %}>
+                        Sick
+                    </option>
+
+                    <option value="Earned"
+                        {% if leave_type == "Earned" %}selected{% endif %}>
+                        Earned
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Status -->
+            <div class="col-md-2">
+
+                <label class="form-label">
+                    Status
+                </label>
+
+                <select name="status" class="form-select">
+
+                    <option value="">
+                        All
+                    </option>
+
+                    <option value="Pending"
+                        {% if status == "Pending" %}selected{% endif %}>
+                        Pending
+                    </option>
+
+                    <option value="Approved"
+                        {% if status == "Approved" %}selected{% endif %}>
+                        Approved
+                    </option>
+
+                    <option value="Rejected"
+                        {% if status == "Rejected" %}selected{% endif %}>
+                        Rejected
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- From Date -->
+            <div class="col-md-2">
+
+                <label class="form-label">
+                    From Date
+                </label>
+
+                <input
+                    type="date"
+                    name="from_date"
+                    class="form-control"
+                    value="{{ from_date }}"
+                >
+
+            </div>
+
+
+            <!-- To Date -->
+            <div class="col-md-2">
+
+                <label class="form-label">
+                    To Date
+                </label>
+
+                <input
+                    type="date"
+                    name="to_date"
+                    class="form-control"
+                    value="{{ to_date }}"
+                >
+
+            </div>
+
+
+            <!-- Buttons -->
+            <div class="col-md-1 d-flex align-items-end">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary w-100">
+                    Search
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="mt-3">
+
+            <a
+                href="{% url 'leave_request' %}"
+                class="btn btn-secondary btn-sm">
+                Clear Filters
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
 
         <div class="card-body">
 
@@ -22,6 +172,7 @@
                         <th>Reason</th>
                         <th>From Date</th>
                         <th>To Date</th>
+                        <th>Days</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -34,64 +185,42 @@
                 <tr>
 
                     <td>{{ leave.id }}</td>
+
                     <td>{{ leave.staff.name }}</td>
+
                     <td>{{ leave.leave_type }}</td>
+
                     <td>{{ leave.reason }}</td>
+
                     <td>{{ leave.from_date }}</td>
+
                     <td>{{ leave.to_date }}</td>
 
+                    <td>{{ leave.leave_days }}</td>
+
                     <td>
-<td>{{ leave.staff.name }}</td>
-
-<td>{{ leave.leave_type }}</td>
-
-<td>{{ leave.from_date }}</td>
-
-<td>{{ leave.to_date }}</td>
-
-<td>{{ leave.leave_days }}</td>
-
-<td>{{ leave.status }}</td>
-
-<td>
-
-     {% if leave.status == "Pending" %}
-
-        <a href="{% url 'approve_leave' leave.id %}">
-            Approve
-        </a>
-
-        <a href="{% url 'reject_leave' leave.id %}">
-            Reject
-        </a>
-
-    {% else %}
-
-        {{ leave.status }}
-
-    {% endif %}
-
-</td>
+                        {{ leave.status }}
+                    </td>
 
                     <td>
 
                         {% if leave.status == "Pending" %}
 
-                        <a href="{% url 'approve_leave' leave.id %}"
-                           class="btn btn-success btn-sm">
-                            Approve
-                        </a>
+                            <a href="{% url 'approve_leave' leave.id %}"
+                               class="btn btn-success btn-sm">
+                                Approve
+                            </a>
 
-                        <a href="{% url 'reject_leave' leave.id %}"
-                           class="btn btn-danger btn-sm">
-                            Reject
-                        </a>
+                            <a href="{% url 'reject_leave' leave.id %}"
+                               class="btn btn-danger btn-sm">
+                                Reject
+                            </a>
 
                         {% else %}
 
-                        <span class="text-muted">
-                            Completed
-                        </span>
+                            <span class="text-muted">
+                                Completed
+                            </span>
 
                         {% endif %}
 
@@ -102,7 +231,7 @@
                 {% empty %}
 
                 <tr>
-                    <td colspan="8" class="text-center">
+                    <td colspan="9" class="text-center">
                         No Leave Requests Found
                     </td>
                 </tr>
