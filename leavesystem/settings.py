@@ -74,13 +74,15 @@ WSGI_APPLICATION = 'leavesystem.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-import dj_database_url
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default='YOUR_RENDER_INTERNAL_DATABASE_URL',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'slms',
+        'USER' : 'root',
+        'PASSWORD':'Root@1234',
+        'HOST': 'localhost',
+        'PORT':'3306'
+    }
 }
 
 # Password validation
@@ -118,7 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
